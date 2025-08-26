@@ -1,0 +1,277 @@
+@if (!loading) {
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="row g-3">
+    <!-- Fecha -->
+    <div class="col-md-6">
+      <label class="form-label">Fecha transacción</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="fecha_transaccion"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('fecha_transaccion') }"
+      />
+    </div>
+
+    <!-- Número remisión -->
+    <div class="col-md-6">
+      <label class="form-label">Número remisión</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="numero_remision"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('numero_remision') }"
+      />
+    </div>
+
+    <!-- Nombre cliente -->
+    <div class="col-md-4">
+      <label class="form-label">Nombre cliente</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="nombre_cliente"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('nombre_cliente') }"
+      />
+    </div>
+    <!-- Documento identidad -->
+    <div class="col-md-4">
+      <label class="form-label">Documento identidad</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="documento_identidad"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('documento_identidad') }"
+      />
+    </div>
+
+    <!-- Número contacto -->
+    <div class="col-md-4">
+      <label class="form-label">Número contacto</label>
+      <input
+        type="tel"
+        class="form-control"
+        formControlName="numero_contacto"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('numero_contacto') }"
+      />
+    </div>
+
+    <!-- Tipo movimiento -->
+    <div class="col-md-6">
+      <label class="form-label">Tipo movimiento</label>
+      <select
+        class="form-select"
+        formControlName="tipo_movimiento"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('tipo_movimiento') }"
+      >
+        <option>VENTA</option>
+        <option>GASTO</option>
+      </select>
+    </div>
+
+    <!-- Categoría -->
+    <div class="col-md-6">
+      <label class="form-label">Categoría</label>
+      <select
+        class="form-select"
+        formControlName="categoria"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('categoria') }"
+      >
+        <option>MULTAS</option>
+        <option>LIQUIDACIÓN IMPUESTOS</option>
+        <option>SOAT</option>
+        <option>TRASPASOS - TRAMITES</option>
+        <option>RENOVACION LICENCIA</option>
+        <option>ESCUELA CONDUCCIÓN</option>
+        <option>TECNOMECANICA</option>
+        <option>TASA DE DESCONGESTIÓN</option>
+        <option>N/A</option>
+      </select>
+    </div>
+
+    <!-- Tipo vehículo -->
+    <div class="col-md-6">
+      <label class="form-label">Tipo vehículo</label>
+      <select
+        class="form-select"
+        formControlName="tipo_vehiculo"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('tipo_vehiculo') }"
+      >
+        <option>Motocicleta</option>
+        <option>Automóvil</option>
+        <option>N/A</option>
+      </select>
+    </div>
+
+    <!-- Placa vehículo -->
+    <div class="col-md-6">
+      <label class="form-label">Placa vehículo</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="placa_vehiculo"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('placa_vehiculo') }"
+      />
+    </div>
+
+    <!-- Descripción -->
+    <div class="col-md-12">
+      <label class="form-label">Descripción</label>
+      <textarea
+        class="form-control"
+        rows="1"
+        formControlName="descripcion"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('descripcion') }"
+      ></textarea>
+    </div>
+
+    <!-- Medio pago -->
+    <div class="col-md-4">
+      <label class="form-label">Medio pago</label>
+      <select
+        class="form-select"
+        formControlName="medio_pago"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('medio_pago') }"
+      >
+        <option>EFECTIVO</option>
+        <option>TRANSFERENCIA</option>
+        <option>DATAFONO</option>
+      </select>
+    </div>
+    <!-- Valor -->
+    <div class="col-md-4">
+      <label class="form-label">Valor</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="valor"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('valor') }"
+      />
+    </div>
+
+    <!-- Pago parcial -->
+    <!-- Pago parcial (radio) -->
+    <div class="col-md-4">
+      <label class="form-label d-block">¿Pago parcial?</label>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="pagoNo"
+          value="No"
+          formControlName="pago_parcial"
+        />
+        <label class="form-check-label" for="pagoNo">No</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="pagoSi"
+          value="Si"
+          formControlName="pago_parcial"
+        />
+        <label class="form-check-label" for="pagoSi">Si</label>
+      </div>
+    </div>
+
+    @if (registerForm.get('pago_parcial')?.value === 'Si') {
+    <div class="col-md-6">
+      <label class="form-label">Valor parcial</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="valor_parcial"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('valor_parcial') }"
+      />
+    </div>
+    }
+
+    <!-- Estado transacción -->
+    <div class="col-md-6">
+      <label class="form-label">Estado transacción</label>
+      <select
+        class="form-select"
+        formControlName="estado_transaccion"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('estado_transaccion') }"
+      >
+        <option>Pendiente</option>
+        <option>Completada</option>
+      </select>
+    </div>
+
+    <!-- Estado gestión -->
+    <div class="col-md-6">
+      <label class="form-label">Estado gestión</label>
+      <select
+        class="form-select"
+        formControlName="estado_gestion"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('estado_gestion') }"
+      >
+        <option>En proceso</option>
+        <option>Finalizado</option>
+      </select>
+    </div>
+
+    <!-- Medio captación -->
+    <div class="col-md-12">
+      <label class="form-label">Medio captación</label>
+
+      <select
+        class="form-select"
+        formControlName="medio_captacion"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('medio_captacion') }"
+      >
+        <option>PUNTO FISICO</option>
+        <option>WHATSAPP PERSONAL ANA</option>
+        <option>WHATSAPP PERSONAL BRYAN</option>
+        <option>WHATSAPP CORPORATIVO</option>
+        <option>TIKTOK</option>
+        <option>FACEBOOK</option>
+        <option>INSTAGRAM</option>
+        <option>OTRO</option>
+      </select>
+    </div>
+    <!-- Observaciones -->
+    <div class="col-12">
+      <label class="form-label">Observaciones</label>
+      <textarea
+        class="form-control"
+        rows="2"
+        formControlName="observaciones"
+        required
+        [ngClass]="{ 'is-invalid': invalidField('observaciones') }"
+      ></textarea>
+    </div>
+
+    <!-- Botón -->
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary px-4">Guardar</button>
+    </div>
+  </form>
+</div>
+
+} @if (loading) {
+<div style="display: flex; justify-content: center; align-items: center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+}
+
+<!-- [disabled]="registerForm.invalid" -->
