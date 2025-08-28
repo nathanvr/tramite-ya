@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class SheetServiceService {
   private http = inject(HttpClient);
   private apiUrl =
-    'https://script.google.com/macros/s/AKfycbyoGJF1LHyDDp_8ypPm994rm6RUQ41aWEfV5ql-Hsq_7-Y1cG3946PWYgFgWMI-E3DncQ/exec';
+    'https://script.google.com/macros/s/AKfycbynjS4R0r0bqmBJVWaCgiBLOSHd_sPEU2GjjvjHjyjFTqpYjmX1Jvxebi_EwO5_3IbGEA/exec';
   idToken = '';
 
   constructor() {}
