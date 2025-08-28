@@ -111,6 +111,9 @@ export class AuthService {
   getAccessToken(): string | null {
     return this.accessTokenSubject.value;
   }
+  getUser() {
+    return this.userSubject.value;
+  }
 
   logout() {
     this.userSubject.next(null);

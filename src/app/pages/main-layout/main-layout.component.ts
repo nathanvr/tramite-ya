@@ -39,6 +39,12 @@ export class MainLayoutComponent {
 
   formStatus: string = '';
 
+  userName: string = '';
+
+  constructor() {
+    this.userName = this.auth.getUser().name;
+  }
+
   openForm(formName: string) {
     this.formStatus = formName;
   }
