@@ -104,4 +104,17 @@ export class RegisterFormComponent {
     const control = this.registerForm.get(field);
     return control ? control.invalid && control.touched : false;
   }
+
+  onInputNumber(event: Event, controlName: string) {
+    const input = event.target as HTMLInputElement;
+    const raw = input.value.replace(/\D/g, ''); // solo números
+    if (raw) {
+      // guarda el número limpio en el formControl
+      this.registerForm.get(controlName)?.setValue(+raw, { emitEvent: false });
+      // muestra con separadores de miles
+      input.value = new Intl.NumberFormat('es-CO').format(+raw);
+    } else {
+      this.registerForm.get(controlName)?.setValue(null, { emitEvent: false });
+    }
+  }
 }

@@ -152,11 +152,12 @@
     <div class="col-md-4">
       <label class="form-label">Valor</label>
       <input
-        type="number"
+        type="text"
         class="form-control"
         formControlName="valor"
         required
         [ngClass]="{ 'is-invalid': invalidField('valor') }"
+        (input)="onInputNumber($event, 'valor')"
       />
     </div>
 
@@ -190,11 +191,12 @@
     <div class="col-md-6">
       <label class="form-label">Valor parcial</label>
       <input
-        type="number"
+        type="text"
         class="form-control"
         formControlName="valor_parcial"
         required
         [ngClass]="{ 'is-invalid': invalidField('valor_parcial') }"
+        (input)="onInputNumber($event, 'valor_parcial')"
       />
     </div>
     }
